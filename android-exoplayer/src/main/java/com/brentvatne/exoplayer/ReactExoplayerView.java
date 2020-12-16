@@ -80,6 +80,8 @@ import java.util.Locale;
 import java.util.UUID;
 import java.util.Map;
 
+import com.daasuu.epf.EPlayerView;
+
 @SuppressLint("ViewConstructor")
 class ReactExoplayerView extends FrameLayout implements
         LifecycleEventListener,
@@ -463,6 +465,8 @@ class ReactExoplayerView extends FrameLayout implements
                     eventEmitter.loadStart();
                     loadVideoStarted = true;
 
+                    Log.d("AUK", "******** AUK ******");
+
                     ePlayerView = new EPlayerView(this);
                     // set SimpleExoPlayer
                     ePlayerView.setSimpleExoPlayer(player);
@@ -470,6 +474,8 @@ class ReactExoplayerView extends FrameLayout implements
                     // add ePlayerView to WrapperView
                     ((MovieWrapperView) findViewById(R.id.layout_movie_wrapper)).addView(ePlayerView);
                     ePlayerView.onResume();
+
+                    ePlayerView.setGlFilter(new GlSepiaFilter());
                 }
 
                 // Initializing the playerControlView
