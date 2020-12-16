@@ -462,6 +462,14 @@ class ReactExoplayerView extends FrameLayout implements
 
                     eventEmitter.loadStart();
                     loadVideoStarted = true;
+
+                    ePlayerView = new EPlayerView(this);
+                    // set SimpleExoPlayer
+                    ePlayerView.setSimpleExoPlayer(player);
+                    ePlayerView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                    // add ePlayerView to WrapperView
+                    ((MovieWrapperView) findViewById(R.id.layout_movie_wrapper)).addView(ePlayerView);
+                    ePlayerView.onResume();
                 }
 
                 // Initializing the playerControlView
